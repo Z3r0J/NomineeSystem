@@ -21,12 +21,7 @@ namespace NominaProject.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            if (!Employee.IsLogged)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
-            return View(await _context.Employees.ToListAsync());
+            return Employee.IsLogged ? View(await _context.Employees.ToListAsync()) : RedirectToAction("Index", "Home");
         }
 
         // GET: Employees/Details/5
