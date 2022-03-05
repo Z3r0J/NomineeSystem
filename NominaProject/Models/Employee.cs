@@ -16,7 +16,7 @@ namespace NominaProject.Models
         public int DepartmentId { get; set; }
         public int JobPosition { get; set; }
         public double MonthlySalary { get; set; }
-        public string User { get; set; }
-        public string Password { get; set; }
+        public Users Users { get; set; }
+        public static bool IsLogged { get; set; } 
     }
 }

@@ -30,12 +30,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.MonthlySalary)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.User)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -59,12 +53,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MonthlySalary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.IdEmployee">Edit</a> |

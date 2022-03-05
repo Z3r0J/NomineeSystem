@@ -13,7 +13,6 @@ namespace NominaProject.Controllers
     public class EmployeesController : Controller
     {
         private readonly AppDbContext _context;
-
         public EmployeesController(AppDbContext context)
         {
             _context = context;
@@ -22,6 +21,11 @@ namespace NominaProject.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
+            if (!Employee.IsLogged)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(await _context.Employees.ToListAsync());
         }
 

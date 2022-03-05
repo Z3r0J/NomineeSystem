@@ -15,5 +15,8 @@ namespace NominaProject.Data
         }
 
         public DbSet<NominaProject.Models.Employee> Employees { get; set; }
+
+        public DbSet<NominaProject.Models.Users> Users { get; set; }
+
     }
 }
