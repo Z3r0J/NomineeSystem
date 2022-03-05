@@ -72,5 +72,15 @@ namespace NominaProject.Controllers
                 throw;
             }
         }
+
+        [HttpPost]
+        public ActionResult Logout() {
+            Employee.IsLogged = false;
+            GetNameAndLastName.Name = "";
+            GetNameAndLastName.LastName = "";
+
+            return RedirectToAction("Index","Home");
+        
+        }
     }
 }
