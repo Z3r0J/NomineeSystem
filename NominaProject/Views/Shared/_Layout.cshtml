@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -6,6 +7,9 @@
     <title>@ViewData["Title"] - NominaProject</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/all.css" />
+    <script src="~/js/all.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -25,13 +29,36 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
-                    <p class="nav navbar-text">Hello, @User.Identity.Name!</p>
+
+                    <ul class="navbar-nav">
+                        @if (Employee.IsLogged)
+                        {
+                            <li class="nav-item">
+                                <a id="manage" class="nav-link text-dark" asp-area="" asp-page="" title="Manage">Hello @GetNameAndLastName.Name @GetNameAndLastName.LastName!</a>
+                            </li>
+                            @using (Html.BeginForm("Logout", "Users"))
+                            {
+                                <li class="nav-item">
+                                    <form id="logoutForm" class="form-inline">
+                                        <button id="Logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                    </form>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" id="login" asp-controller="Users" asp-action="Login">Login</a>
+                            </li>
+                        }
+                    </ul>
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+
             @RenderBody()
         </main>
     </div>
