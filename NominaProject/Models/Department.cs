@@ -1,0 +1,17 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+
+namespace NominaProject.Models
+{
+    public class Department
+    {
+        [Key]
+        public int DepartmentId { get; set; }
+        public string departmentName { get; set; }
+        public string location { get; set; }
+        public string departmentLeader { get; set; }
+        public int IdPayroll { get; set; }
+
+
+    }
+}

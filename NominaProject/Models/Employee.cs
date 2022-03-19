@@ -13,7 +13,7 @@ namespace NominaProject.Models
         public string Documents { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
         public int JobPosition { get; set; }
         public double MonthlySalary { get; set; }
         public Users Users { get; set; }
