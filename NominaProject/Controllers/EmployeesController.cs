@@ -13,6 +13,7 @@ namespace NominaProject.Controllers
     public class EmployeesController : Controller
     {
         private readonly AppDbContext _context;
+
         public EmployeesController(AppDbContext context)
         {
             _context = context;
@@ -21,7 +22,8 @@ namespace NominaProject.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            return Employee.IsLogged ? View(await _context.Employees.ToListAsync()) : RedirectToAction("Index", "Home");
+            var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users);
+            return View(await appDbContext.ToListAsync());
         }
 
         // GET: Employees/Details/5
@@ -33,6 +35,8 @@ namespace NominaProject.Controllers
             }
 
             var employee = await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Users)
                 .FirstOrDefaultAsync(m => m.IdEmployee == id);
             if (employee == null)
             {
@@ -45,6 +49,8 @@ namespace NominaProject.Controllers
         // GET: Employees/Create
         public IActionResult Create()
         {
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
+            ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName");
             return View();
         }
 
@@ -53,7 +59,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEmployee,Documents,FirstName,LastName,Department,JobPosition,MonthlySalary,User,Password")] Employee employee)
+        public async Task<IActionResult> Create([Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -61,6 +67,8 @@ namespace NominaProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
+            ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
             return View(employee);
         }
 
@@ -77,6 +85,8 @@ namespace NominaProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
+            ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
             return View(employee);
         }
 
@@ -85,7 +95,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEmployee,Documents,FirstName,LastName,Department,JobPosition,MonthlySalary,User,Password")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers")] Employee employee)
         {
             if (id != employee.IdEmployee)
             {
@@ -112,6 +122,8 @@ namespace NominaProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
+            ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
             return View(employee);
         }
 
@@ -124,6 +136,8 @@ namespace NominaProject.Controllers
             }
 
             var employee = await _context.Employees
+                .Include(e => e.Department)
+                .Include(e => e.Users)
                 .FirstOrDefaultAsync(m => m.IdEmployee == id);
             if (employee == null)
             {

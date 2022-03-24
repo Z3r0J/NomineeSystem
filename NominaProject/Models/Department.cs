@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace NominaProject.Models
@@ -12,6 +13,7 @@ namespace NominaProject.Models
         public string departmentLeader { get; set; }
         public int IdPayroll { get; set; }
 
+        public virtual ICollection<Employee> Employees { get; set; }
 
     }
 }

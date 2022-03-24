@@ -34,7 +34,7 @@
                         @if (Employee.IsLogged)
                         {
                             <li class="nav-item">
-                                <a id="manage" class="nav-link text-dark" asp-area="" asp-page="" title="Manage">Hello @GetNameAndLastName.Name @GetNameAndLastName.LastName!</a>
+                                <span class="nav-link btn text-dark" title="Manage">Hello @GetNameAndLastName.Name @GetNameAndLastName.LastName!</span>
                             </li>
                             @using (Html.BeginForm("Logout", "Users"))
                             {
