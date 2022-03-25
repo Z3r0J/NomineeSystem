@@ -14,6 +14,12 @@ namespace NominaProject.Controllers
     {
         private readonly AppDbContext _context;
 
+        List<SelectListItem> RiskLevel = new()
+        {
+            new SelectListItem { Value = "Bajo", Text = "Bajo" },
+            new SelectListItem { Value = "Medio", Text = "Medio" },
+            new SelectListItem { Value = "Alto", Text = "Alto" },
+        };
         public JobPositionsController(AppDbContext context)
         {
             _context = context;
@@ -48,6 +54,7 @@ namespace NominaProject.Controllers
         // GET: JobPositions/Create
         public IActionResult Create()
         {
+            ViewData["RiskLevel"] = RiskLevel;
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
             return View();
         }
@@ -65,6 +72,7 @@ namespace NominaProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RiskLevel"] = RiskLevel;
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", jobPosition.DepartmentId);
             return View(jobPosition);
         }
@@ -82,6 +90,7 @@ namespace NominaProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["RiskLevel"] = RiskLevel;
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", jobPosition.DepartmentId);
             return View(jobPosition);
         }
@@ -118,6 +127,7 @@ namespace NominaProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["RiskLevel"] = RiskLevel;
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", jobPosition.DepartmentId);
             return View(jobPosition);
         }

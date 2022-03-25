@@ -4,44 +4,58 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-hover table-striped border border-light rounded shadow caption-top">
+    <caption><h2>List of Positions</h2></caption>
+    <thead class="border border-light rounded table-position-color">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.PositionName)
+                Create
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department)
+                Position
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.RiskLevel)
+                Department
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MaxSalary)
+                Risk Level
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MinSalary)
+                Max Salary
+            </th>
+            <th>
+                Min Salary
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+        <tr class="table-position">
+            <td>
+                <a asp-action="Create" class="badge badge-add-position"><i class="fa fa-square-plus"></i> Add</a>
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PositionName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Department.DepartmentId)
+                @Html.DisplayFor(modelItem => item.Department.departmentName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.RiskLevel)
+
+                @if (item.RiskLevel == "Bajo")
+                {
+                    <span class="badge btn-success">@Html.DisplayFor(modelItem => item.RiskLevel)</span>
+                }
+                else if (item.RiskLevel == "Medio")
+                {
+                    <span class="badge btn-warning">@Html.DisplayFor(modelItem => item.RiskLevel)</span>
+                }
+                else
+                {
+                    <span class="badge btn-danger">@Html.DisplayFor(modelItem => item.RiskLevel)</span>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MaxSalary)
@@ -50,11 +64,11 @@
                 @Html.DisplayFor(modelItem => item.MinSalary)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPosition">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPosition">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPosition">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdPosition"class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                <a asp-action="Details" asp-route-id="@item.IdPosition" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.IdPosition" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a> 
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

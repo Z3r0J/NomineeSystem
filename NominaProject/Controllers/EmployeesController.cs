@@ -47,12 +47,21 @@ namespace NominaProject.Controllers
             return View(employee);
         }
 
+        public JsonResult loadPosition(int DepartmentId) {
+
+            var Position = _context.JobPosition.Where(x => x.DepartmentId == DepartmentId).Select(s => new {
+                Id = s.IdPosition,
+                Name = s.PositionName
+            }).ToList();
+
+            return Json(Position);
+        }
+
         // GET: Employees/Create
         public IActionResult Create()
         {
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName");
-            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName");
             return View();
         }
 
@@ -65,12 +74,11 @@ namespace NominaProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (employee.MonthlySalary > _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First() || employee.MonthlySalary < _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First())
+                if (employee.MonthlySalary > _context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MaxSalary).First() || employee.MonthlySalary < _context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MinSalary).First())
                 {
                     ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
                     ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
-                    ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
-                    ViewBag.ErrorMessage = $"The monthly salary must be between {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First()} and {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First()}";
+                    ViewBag.ErrorMessage = $"The monthly salary must be between {_context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MinSalary).First()} and {_context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MaxSalary).First()}";
                     return View();
                 }
 
@@ -80,7 +88,6 @@ namespace NominaProject.Controllers
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
-            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
         }
 
@@ -119,12 +126,11 @@ namespace NominaProject.Controllers
             {
                 try
                 {
-                    if (employee.MonthlySalary > _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First() || employee.MonthlySalary< _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First())
+                    if (employee.MonthlySalary > _context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MaxSalary).First() || employee.MonthlySalary< _context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MinSalary).First())
                     {
                         ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
                         ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
-                        ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
-                        ViewBag.ErrorMessage = $"El Salario debe estar comprendido entre {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First()} y {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First()}";
+                        ViewBag.ErrorMessage = $"El Salario debe estar comprendido entre {_context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MinSalary).First()} y {_context.JobPosition.Where(x => x.IdPosition == employee.JobPositionId).Select(x => x.MaxSalary).First()}";
                         return View();
                     }
                     _context.Update(employee);
@@ -145,7 +151,6 @@ namespace NominaProject.Controllers
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
-            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
         }
 

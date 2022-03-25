@@ -33,6 +33,12 @@ a.navbar-brand {
     color: white;
     margin-bottom: 10px;
 }
+.form-position {
+    padding: 10px 10px 10px 10px;
+    background: linear-gradient(360deg, rgb(36 29 0) 0%, rgb(121 102 9) 35%, rgb(255 224 0) 100%);
+    color: white;
+    margin-bottom: 10px;
+}
 .bottom-form {
     margin-top: 8px;
     margin-bottom: 8px;
@@ -70,6 +76,19 @@ a.navbar-brand {
 }
 .badge-add-department {
     background: #07a369;
+    width: 74px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-add-position:hover {
+    color: white;
+    background: #a1bb10;
+}
+.badge-add-position {
+    background: #73831d;
     width: 74px;
     height: 30px;
     text-decoration: none;
@@ -137,6 +156,10 @@ a.navbar-brand {
     background: rgb(45 199 156 / 76%);
     color: white!important;
 }
+.table-position:hover {
+    background: rgb(231 144 36 / 88%);
+    color: white !important;
+}
 .table-department:hover {
     background: rgb(90 209 148);
     color: white !important;
@@ -150,6 +173,12 @@ a.navbar-brand {
 .table-department-color {
     color: white;
     background: #14b956 !important;
+    height: 65px;
+    font-size: 20px;
+}
+.table-position-color {
+    color: white;
+    background: #cf7315 !important;
     height: 65px;
     font-size: 20px;
 }

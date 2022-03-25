@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="RiskLevel" class="control-label"></label>
-                <input asp-for="RiskLevel" class="form-control" />
+                <select asp-for="RiskLevel" class="form-control" asp-items="ViewBag.RiskLevel"></select>
                 <span asp-validation-for="RiskLevel" class="text-danger"></span>
             </div>
             <div class="form-group">
