@@ -48,6 +48,10 @@
               "target": "Package",
               "version": "[5.0.12, )"
             },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.14, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[5.0.14, )"
@@ -60,7 +64,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[5.0.12, )"
+              "version": "[5.0.14, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration": {
               "target": "Package",

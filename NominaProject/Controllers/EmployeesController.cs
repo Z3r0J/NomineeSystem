@@ -22,8 +22,8 @@ namespace NominaProject.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
-            var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users);
-            return View(await appDbContext.ToListAsync());
+            var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users).Include(e=>e.JobPosition);
+            return Employee.IsLogged ? View(await appDbContext.ToListAsync()): RedirectToAction("Index","Home");
         }
 
         // GET: Employees/Details/5
@@ -37,6 +37,7 @@ namespace NominaProject.Controllers
             var employee = await _context.Employees
                 .Include(e => e.Department)
                 .Include(e => e.Users)
+                .Include(e => e.JobPosition)
                 .FirstOrDefaultAsync(m => m.IdEmployee == id);
             if (employee == null)
             {
@@ -51,6 +52,7 @@ namespace NominaProject.Controllers
         {
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName");
+            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName");
             return View();
         }
 
@@ -59,16 +61,26 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers")] Employee employee)
+        public async Task<IActionResult> Create([Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers,JobPositionId")] Employee employee)
         {
             if (ModelState.IsValid)
             {
+                if (employee.MonthlySalary > _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First() || employee.MonthlySalary < _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First())
+                {
+                    ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
+                    ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
+                    ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
+                    ViewBag.ErrorMessage = $"The monthly salary must be between {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First()} and {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First()}";
+                    return View();
+                }
+
                 _context.Add(employee);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
+            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
         }
 
@@ -87,6 +99,7 @@ namespace NominaProject.Controllers
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
+            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
         }
 
@@ -95,7 +108,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("IdEmployee,Documents,FirstName,LastName,DepartmentId,JobPosition,MonthlySalary,UsersIdUsers,JobPositionId")] Employee employee)
         {
             if (id != employee.IdEmployee)
             {
@@ -106,6 +119,14 @@ namespace NominaProject.Controllers
             {
                 try
                 {
+                    if (employee.MonthlySalary > _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First() || employee.MonthlySalary< _context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First())
+                    {
+                        ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
+                        ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
+                        ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
+                        ViewBag.ErrorMessage = $"El Salario debe estar comprendido entre {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MinSalary).First()} y {_context.JobPosition.Where(x => x.DepartmentId == employee.DepartmentId).Select(x => x.MaxSalary).First()}";
+                        return View();
+                    }
                     _context.Update(employee);
                     await _context.SaveChangesAsync();
                 }
@@ -124,6 +145,7 @@ namespace NominaProject.Controllers
             }
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName", employee.DepartmentId);
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
+            ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
         }
 

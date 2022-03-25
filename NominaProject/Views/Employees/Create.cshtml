@@ -4,57 +4,77 @@
     ViewData["Title"] = "Create";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Create</h1>
-
-<h4>Employee</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-6 border border-light shadow rounded form-back">
+        <div class="row text-center form-employee">
+        <h4>Employee</h4>
+        </div>
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="row input-i">
+            <div class="form-group col-md-6">
+                <span class="icon"><i class="fa fa-id-card"></i></span>
                 <label asp-for="Documents" class="control-label"></label>
-                <input asp-for="Documents" class="form-control" />
+                <input asp-for="Documents" class="form-control form-input" />
                 <span asp-validation-for="Documents" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
+                <span class="icon2"><i class="fa fa-user"></i></span>
                 <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
+                <input asp-for="FirstName" class="form-control form-input" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="LastName" class="control-label"></label>
-                <input asp-for="LastName" class="form-control" />
-                <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="row input-i">
+                    <div class="form-group col-md-6">
+                        <span class="icon"><i class="fa fa-image-portrait"></i></span>
+                        <label asp-for="LastName" class="control-label"></label>
+                        <input asp-for="LastName" class="form-control form-input" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <span class="icon2"><i class="fa fa-building"></i></span>
+                        <label asp-for="DepartmentId" class="control-label"></label>
+                        <select asp-for="DepartmentId" class="form-control form-input"data-style="btn-primary" asp-items="ViewBag.DepartmentId"></select>
+                    </div>
+        </div>
+        <div class="row input-i">
+            <div class="form-group col-md-6">
+                <span class="icon"><i class="fa fa-chart-line"></i></span>
+                <label asp-for="JobPositionId" class="control-label"></label>
+                <select asp-for="JobPositionId" class="form-control form-input" asp-items="ViewBag.JobPositionId"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class ="form-control" asp-items="ViewBag.DepartmentId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="JobPosition" class="control-label"></label>
-                <input asp-for="JobPosition" class="form-control" />
-                <span asp-validation-for="JobPosition" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
+                <span class="icon2"><i class="fa fa-hand-holding-dollar"></i></span>
                 <label asp-for="MonthlySalary" class="control-label"></label>
-                <input asp-for="MonthlySalary" class="form-control" />
+                <input asp-for="MonthlySalary" class="form-control form-input" />
+                @if (ViewBag.ErroMessage != "")
+                {
+                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+                }
+                else
+                {
+
+                }
                 <span asp-validation-for="MonthlySalary" class="text-danger"></span>
             </div>
+        </div>
+        <div class="row input-i">
             <div class="form-group">
                 <label asp-for="UsersIdUsers" class="control-label"></label>
-                <select asp-for="UsersIdUsers" class ="form-control" asp-items="ViewBag.UsersIdUsers"></select>
+                <select asp-for="UsersIdUsers" class="form-control form-input" asp-items="ViewBag.UsersIdUsers"></select>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+            <div class="row bottom-form">
+            <div class="form-group col-md-6">
+                <input type="submit" value="Create" class="btn btn-create" />
             </div>
+            <div class="form-group col-md-6">
+                <a asp-action="Index" class="btn btn-danger">Back to List</a>
+            </div>
+        </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

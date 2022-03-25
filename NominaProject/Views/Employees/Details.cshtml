@@ -5,57 +5,50 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Employee</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Documents)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Documents)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Department)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department.DepartmentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.JobPosition)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.JobPosition)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MonthlySalary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MonthlySalary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Users)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Users.IdUsers)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdEmployee">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group shadow">
+                <li class="list-group-item details-header">
+                    <span class="lead"><h3>Details of @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Information:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+                    </span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Documents)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Department:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Department.departmentName) - @Html.DisplayFor(model => model.JobPosition.PositionName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Monthly Salary:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.MonthlySalary)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">UserName:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Users.UserName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Edit" asp-route-id="@Model.IdEmployee" class="badge badge-edit">Edit</a> |
+                    <a asp-action="Index" class="badge badge-back">Back to List</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

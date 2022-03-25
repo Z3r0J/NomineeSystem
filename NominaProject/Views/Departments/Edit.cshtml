@@ -4,44 +4,52 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
-
-<h4>Department</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-6 border border-light shadow rounded form-backd">
+        <div class="row text-center form-department">
+            <h4>Edit Department</h4>
+        </div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DepartmentId" />
-            <div class="form-group">
-                <label asp-for="departmentName" class="control-label"></label>
-                <input asp-for="departmentName" class="form-control" />
-                <span asp-validation-for="departmentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="location" class="control-label"></label>
-                <input asp-for="location" class="form-control" />
-                <span asp-validation-for="location" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="departmentLeader" class="control-label"></label>
-                <input asp-for="departmentLeader" class="form-control" />
-                <span asp-validation-for="departmentLeader" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="IdPayroll" class="control-label"></label>
-                <input asp-for="IdPayroll" class="form-control" />
-                <span asp-validation-for="IdPayroll" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <span class="icon"><i class="fa fa-building"></i></span>
+                    <label asp-for="departmentName" class="control-label"></label>
+                    <input asp-for="departmentName" class="form-control form-input" />
+                    <span asp-validation-for="departmentName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <span class="icon2"><i class="fa fa-location-dot"></i></span>
+                    <label asp-for="location" class="control-label"></label>
+                    <input asp-for="location" class="form-control form-input" />
+                    <span asp-validation-for="location" class="text-danger"></span>
+                </div>
+                </div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <span class="icon"><i class="fa fa-user-gear"></i></span>
+                    <label asp-for="departmentLeader" class="control-label"></label>
+                    <input asp-for="departmentLeader" class="form-control form-input" />
+                    <span asp-validation-for="departmentLeader" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <span class="icon2"><i class="fa fa-note-sticky"></i></span>
+                    <label asp-for="IdPayroll" class="control-label"></label>
+                    <input asp-for="IdPayroll" class="form-control form-input" />
+                    <span asp-validation-for="IdPayroll" class="text-danger"></span>
+                </div>
+                    </div>
+            <div class="row bottom-form">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Save" class="btn btn-create" />                    
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                </div>
+           </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

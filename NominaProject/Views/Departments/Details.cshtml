@@ -4,39 +4,38 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
 <div>
-    <h4>Department</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.departmentName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.departmentName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.location)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.location)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.departmentLeader)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.departmentLeader)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdPayroll)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdPayroll)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.DepartmentId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        <div class="row">
+            <div class="col-8">
+                <ul class="list-group shadow">
+                    <li class="list-group-item" style=" background: #167ec7; color:#fff;">
+                        <span class="lead"><h3>Details of @Html.DisplayFor(model => model.departmentName)</h3></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Department Name:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.departmentName)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Location:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.location)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Leader:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.departmentLeader)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Payroll:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.IdPayroll)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <a asp-action="Edit" asp-route-id="@Model.DepartmentId" class="badge badge-edit">Edit</a> |
+                        <a asp-action="Index" class="badge badge-back">Back to List</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
 </div>

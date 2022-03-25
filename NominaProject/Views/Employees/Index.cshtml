@@ -5,68 +5,59 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
+<table class="table table-hover table-striped border border-light rounded shadow caption-top">
+    <caption><h2>List of Employees</h2></caption>
+    <thead class="border border-light rounded table-employee-color">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Documents)
+                Create
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Information
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.LastName)
+                Department
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Department)
+                Monthly Salary
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.JobPosition)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MonthlySalary)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Users)
+                User
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Documents)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Department.DepartmentId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.JobPosition)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MonthlySalary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Users.IdUsers)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEmployee">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEmployee">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEmployee">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="table-employee">
+                <td>
+                    <a asp-action="Create" class="badge badge-create"><i class="fa fa-square-plus"></i> Add</a>
+                </td>
+                <td>
+                    <div class="row">
+                        <b>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</b>
+                    </div>
+                    <div class="row">
+                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Documents)
+                    </div>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.departmentName) -
+                    @Html.DisplayFor(modelItem => item.JobPosition.PositionName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MonthlySalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Users.UserName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdEmployee" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdEmployee" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdEmployee" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

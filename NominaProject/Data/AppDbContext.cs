@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NominaProject.Models;
+using NominaProject;
 
 namespace NominaProject.Data
 {
@@ -18,6 +19,8 @@ namespace NominaProject.Data
         public DbSet<NominaProject.Models.Users> Users { get; set; }
 
         public DbSet<NominaProject.Models.Department> Department { get; set; }
+
+        public DbSet<NominaProject.JobPosition> JobPosition { get; set; }
 
     }
 }

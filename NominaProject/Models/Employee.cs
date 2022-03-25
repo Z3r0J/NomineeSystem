@@ -11,12 +11,14 @@ namespace NominaProject.Models
     {
         [Key]
         public int IdEmployee { get; set; }
+        [Required]
         public string Documents { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
-        public int JobPosition { get; set; }
+        public int JobPositionId { get; set; }
+        public virtual JobPosition JobPosition { get; set; }
         public double MonthlySalary { get; set; }
         public int UsersIdUsers { get; set; }
         public virtual Users Users { get; set; }

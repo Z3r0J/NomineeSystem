@@ -21,7 +21,177 @@ a.navbar-brand {
     border-top-right-radius:5px;
 
 }
-
+.form-employee {
+    padding: 10px 10px 10px 10px;
+    background: linear-gradient(360deg, rgba(0,36,25,1) 0%, rgba(9,121,84,1) 35%, rgba(0,255,171,1) 100%);
+    color:white;
+    margin-bottom: 10px;
+}
+.form-department {
+    padding: 10px 10px 10px 10px;
+    background: linear-gradient(360deg, rgb(0 25 36) 0%, rgb(9 121 121) 35%, rgb(0 255 231) 100%);
+    color: white;
+    margin-bottom: 10px;
+}
+.bottom-form {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.btn-create {
+    background: #1c8b91;
+    color: white;
+    font-size: 17px;
+    border-radius: 11px;
+}
+.btn-create:hover {
+    text-decoration: none;
+    background-color: #397878 !important;
+    opacity:1 !important;
+    color:white;
+}
+.btn-create:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgb(40 112 102 / 25%);
+    background: rgb(12 116 112) !important;
+    color:white;
+}
+.badge-create {
+    background: #20abb9;
+    width: 74px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-create:hover{
+    color:white;
+    background: #1f848f;
+}
+.badge-add-department {
+    background: #07a369;
+    width: 74px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-add-department:hover{
+    color:white;
+    background: #1f8f56;
+}
+.badge-edit {
+    background: #ffc107;
+    width: 81px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-edit:hover{
+    color:white;
+    background: #ff9c07;
+}
+.badge-details {
+    background: #0dcaf0;
+    width: 97px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-details:hover{
+    color:white;
+    background: #1ec5cd;
+}
+.badge-delete {
+    background: #f1172c;
+    width: 97px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-delete:hover{
+    color:white;
+    background: #dc3545;
+}
+.badge-back {
+    background: #f1172c;
+    width: 138px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-back:hover{
+    color:white;
+    background: #dc3545;
+}
+.table-employee:hover {
+    background: rgb(45 199 156 / 76%);
+    color: white!important;
+}
+.table-department:hover {
+    background: rgb(90 209 148);
+    color: white !important;
+}
+.table-employee-color {
+    color: white;
+    background: #14b99a !important;
+    height: 65px;
+    font-size: 20px;
+}
+.table-department-color {
+    color: white;
+    background: #14b956 !important;
+    height: 65px;
+    font-size: 20px;
+}
+.details-header {
+    background: #16bfc7;
+    color: white;
+}
+.input-i {
+    position: relative;
+    display: flex;
+    top: 8px;
+}
+.icon {
+    display: flex;
+    top: 36px;
+    position: absolute;
+    left: 24px;
+    font-size: 19px;
+}
+.icon2 {
+    top: 34px;
+    position: relative;
+    left: 11px;
+    font-size: 19px;
+}
+.form-back {
+    background-color: rgb(37,37,37);
+    color: #78c2ad;
+}
+.form-backd {
+    background-color: rgb(37,37,37);
+    color: #22a6e5;
+}
+.form-input {
+    padding: 7px 10px 10px 40px;
+    border-radius: 10px;
+    margin-bottom: 13px;
+    background-color: #ededed;
+}
+label {
+    color:white;
+}
 .login-form .form-name{
     text-align:center;
     font-size:46px;
@@ -31,7 +201,7 @@ a.navbar-brand {
     margin-bottom:25px;
     line-height:80px;
 }
-    .login-form .form-name .zerologo {
+.login-form .form-name .zerologo {
         width: 100%;
         height: 206px;
     }
