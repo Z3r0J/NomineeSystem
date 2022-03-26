@@ -4,50 +4,56 @@
     ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h1>Edit</h1>
-
-<h4>JobPosition</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="row justify-content-center">
+    <div class="col-md-6 border border-light shadow rounded form-back">
+        <div class="row text-center form-position">
+            <h4>Edit Positions</h4>
+        </div>
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdPosition" />
-            <div class="form-group">
+            <div class="row input-i">
+            <div class="form-group col-md-6">
                 <label asp-for="PositionName" class="control-label"></label>
-                <input asp-for="PositionName" class="form-control" />
+                <input asp-for="PositionName" class="form-control form-input" />
                 <span asp-validation-for="PositionName" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label asp-for="DepartmentId" class="control-label"></label>
-                <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                <select asp-for="DepartmentId" class="form-control form-input" asp-items="ViewBag.DepartmentId"></select>
                 <span asp-validation-for="DepartmentId" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            </div>
+            <div class="row input-i">
+            <div class="form-group col-md-6">
                 <label asp-for="RiskLevel" class="control-label"></label>
-                <select asp-for="RiskLevel" class="form-control" asp-items="ViewBag.RiskLevel"></select>
+                <select asp-for="RiskLevel" class="form-control form-input" asp-items="ViewBag.RiskLevel"></select>
                 <span asp-validation-for="RiskLevel" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <label asp-for="MaxSalary" class="control-label"></label>
-                <input asp-for="MaxSalary" class="form-control" />
+                <input asp-for="MaxSalary" class="form-control form-input" />
                 <span asp-validation-for="MaxSalary" class="text-danger"></span>
             </div>
+                </div>
+            <div class="row input-i">
             <div class="form-group">
                 <label asp-for="MinSalary" class="control-label"></label>
-                <input asp-for="MinSalary" class="form-control" />
+                <input asp-for="MinSalary" class="form-control form-input" />
                 <span asp-validation-for="MinSalary" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            <div class="row bottom-form">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Save" class="btn btn-create" />
+                </div>
+
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

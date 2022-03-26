@@ -8,42 +8,59 @@
 <h1>Details</h1>
 
 <div>
-    <h4>JobPosition</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PositionName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PositionName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Department)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Department.DepartmentId)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.RiskLevel)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.RiskLevel)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MaxSalary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MaxSalary)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MinSalary)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MinSalary)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdPosition">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group shadow">
+                <li class="list-group-item" style="background: #ef9e26; color: white;">
+                    <span class="lead"><h3>Details of @Html.DisplayFor(model => model.PositionName)</h3></span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Position Name:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.PositionName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Department:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Department.departmentName)
+                    </span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="lead">Risk Level:</span>
+                    <br />
+                    @if (Model.RiskLevel == "Bajo")
+                    {
+                        <span class="badge btn-success">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                    else if (Model.RiskLevel == "Medio")
+                    {
+                        <span class="badge btn-warning">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                    else
+                    {
+                        <span class="badge btn-danger">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Maximum Salary:</span>
+                    <br />
+                    <span>@Html.DisplayFor(model => model.MaxSalary)</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Minimum Salary:</span>
+                    <br />
+                    <span>@Html.DisplayFor(model => model.MinSalary)</span>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Edit" asp-route-id="@Model.IdPosition" class="badge badge-edit">Edit</a> |
+                    <a asp-action="Index" class="badge badge-back">Back to List</a>
+                </li>
+            </ul>
+        </div>
+
+           </div>
+        </div>
