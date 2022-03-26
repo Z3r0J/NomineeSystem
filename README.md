@@ -1,4 +1,4 @@
-# Sistema de Sistema de Nóminas
+# Sistema de Nóminas
 Este es un proyecto de sistema de nóminas que ayuda a gestionar los empleados de una compañia (Sigue en desarrollo, la rama con las actualizaciones mas recientes es "Features")
 
 ## Requisitos 📋
