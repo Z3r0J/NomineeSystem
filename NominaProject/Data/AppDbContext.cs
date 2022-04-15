@@ -19,6 +19,7 @@ namespace NominaProject.Data
         public DbSet<NominaProject.Models.Users> Users { get; set; }
 
         public DbSet<NominaProject.Models.Department> Department { get; set; }
+        public DbSet<NominaProject.Models.Deduction> Deduction { get; set; }
 
         public DbSet<NominaProject.JobPosition> JobPosition { get; set; }
 
