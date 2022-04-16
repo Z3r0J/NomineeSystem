@@ -21,8 +21,10 @@ namespace NominaProject.Controllers
 
         // GET: Departments
         public async Task<IActionResult> Index()
+        
         {
-            return View(await _context.Department.ToListAsync());
+            var appdbContext = _context.Department.Include(e => e.Payroll);
+            return View(await appdbContext.ToListAsync());
         }
 
         // GET: Departments/Details/5
@@ -46,6 +48,8 @@ namespace NominaProject.Controllers
         // GET: Departments/Create
         public IActionResult Create()
         {
+            ViewData["PayrollId"] = new SelectList(_context.Payroll, "IdPayroll", "payName");
+
             return View();
         }
 
@@ -54,7 +58,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Department,departmentName,location,departmentLeader,IdPayroll")] Department department)
+        public async Task<IActionResult> Create([Bind("DepartmentId,departmentName,location,departmentLeader,IdPayroll,PayrollIdPayroll")] Department department)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +66,7 @@ namespace NominaProject.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PayrollId"] = new SelectList(_context.Payroll, "IdPayroll", "payName", department.IdPayroll);
             return View(department);
         }
 
@@ -78,6 +83,7 @@ namespace NominaProject.Controllers
             {
                 return NotFound();
             }
+            ViewData["PayrollId"] = new SelectList(_context.Payroll, "IdPayroll", "payName");
             return View(department);
         }
 
@@ -86,7 +92,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Department,departmentName,location,departmentLeader,IdPayroll")] Department department)
+        public async Task<IActionResult> Edit(int id, [Bind("DepartmentId,departmentName,location,departmentLeader,IdPayroll")] Department department)
         {
             if (id != department.DepartmentId)
             {
@@ -113,6 +119,8 @@ namespace NominaProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["PayrollId"] = new SelectList(_context.Payroll, "IdPayroll", "payName", department.IdPayroll);
+
             return View(department);
         }
 

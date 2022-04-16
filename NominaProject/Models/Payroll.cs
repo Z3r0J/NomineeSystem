@@ -8,7 +8,10 @@ namespace NominaProject.Models
 {
     public class Payroll
     {   [Key]
-        public int payrollId { get; set; }
-        public string pay { get; set; }
+        public int IdPayroll { get; set; }
+        public string payName { get; set; }
+
+        public virtual ICollection<Department> Departments { get; set; }
+
     }
 }

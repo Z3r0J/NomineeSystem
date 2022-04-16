@@ -1,0 +1,37 @@
+﻿@model NominaProject.Models.Income
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Income</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.incomeName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.incomeName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.apply)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.apply)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.state)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.incomeId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

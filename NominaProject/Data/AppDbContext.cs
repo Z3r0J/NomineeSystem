@@ -20,7 +20,8 @@ namespace NominaProject.Data
 
         public DbSet<NominaProject.Models.Department> Department { get; set; }
         public DbSet<NominaProject.Models.Deduction> Deduction { get; set; }
-
+        public DbSet<NominaProject.Models.Income> Income { get; set; }
+        public DbSet<NominaProject.Models.Payroll> Payroll { get; set; }
         public DbSet<NominaProject.JobPosition> JobPosition { get; set; }
 
     }
