@@ -1,7 +1,41 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    var texts = ["Welcome to", "Creativity is important", "Our System"];
+    var texts2 =["Nominee Project!","to us!", "is secure and fast!"];
+    var count = 0;
 
+    function changeText() {
+        $("#example").text(texts[count] + " " + texts2[count]);
+        count < 3-1 ? count++ : count = 0;
+    }
+
+    function WriteText() {
+        var cont2 = $(".p2");
+        var cont1 = $(".p1").text("");
+        var speed = 100;
+        var Otext = cont2.text();
+        var Ocontent = Otext.split("");
+        var i = 0;
+        function show() {
+            if (i < Ocontent.length) {
+                cont1.append(Ocontent[i]);
+                i = i + 1;
+            };
+        };
+        setInterval(show, speed);
+    };
+    $(document).ready(function () {
+        setInterval(WriteText, 5000);
+        setInterval(changeText, 6000);
+    });
+</script>
+<div class="container-lg justify-content-center" style="max-width:877px;">
+<h1 class="p1 text-center alert alert-success border border-light shadow" style="font-style: italic; font-size: 25px; font-weight: bold; height: 57px; color: #ffffff; background-color: #14ad57; "></h1>
+</div>
+<h1 class="p2 text-center" style="font-size: 0px;" id="example">Welcome to Nominee Project!</h1>
 <div class="container-lg" style="max-width: 881px !important; max-height: 586px; margin-bottom: 24px;">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
@@ -18,17 +52,17 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <h5 class="position-absolute top-50 start-50 translate-middle" style="color:white;font-size:52px;"><b>WORKING 💻🖥</b></h5>
+                <h5 class="position-absolute top-50 start-50 translate-middle" style="color:white;font-size:52px; font-family:Poppins;"><b>WORKING 💻🖥</b></h5>
                 <img src="~/images/2.png" class="d-block w-100 border border-3 rounded-3 shadow" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <p style="font-size:25px;"><b>Always are working for you and your nominees, using the best technology and tools on the market.</b></p>
+                    <p style="font-size: 25px; font-family: Poppins;"><b>Always are working for you and your nominees, using the best technology and tools on the market.</b></p>
                 </div>
             </div>
             <div class="carousel-item">
                 <h5 class="position-absolute top-50 start-50 translate-middle" style="color:white;font-size:52px;"><b>CREATIVITY 💡</b></h5>
                 <img src="~/images/3.png" class="d-block w-100 border border-3 rounded-3 shadow" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <p style="font-size:25px;"><b>Always are working for you and your nominees, using the best technology and tools on the market.</b></p>
+                    <p style="font-size:25px;"><b>Our team have the experience to make your dream come true and affordable for you.</b></p>
                 </div>
             </div>
         </div>

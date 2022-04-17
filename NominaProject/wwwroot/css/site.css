@@ -4,10 +4,45 @@ for details on configuring this project to bundle and minify static web assets. 
 * {
 font-family:Poppins!important;
 }
+.link {
+    padding: 20px 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    display: inline-block;
+    text-decoration: none !important;
+}
+
+.menu-drop {
+    top: 100% !important;
+    text-align: left;
+    border-top: 1px solid #a3f042 !important;
+    -webkit-box-shadow: 0 2px 10px -2px rgb(0 0 0 / 10%);
+    box-shadow: 0 2px 10px -2px rgb(0 0 0 / 10%);
+    margin-top: -13px !important;
+    margin-left: 4px;
+    background: #fff;
+    -webkit-transition: 0.2s 0s;
+    -o-transition: 0.2s 0s;
+    transition: 0.2s 0s;
+    border: 1px solid #fff;
+    border-radius: 0px !important;
+}
+.menu-element {
+    padding: 9px 20px;
+    display: block;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
   word-break: break-all;
+}
+.text-white {
+    font-size: 14px;
+    color:rgba(255, 255, 255, 0.7) !important
+}
+
+.text-white:hover,.text-white:focus{
+    color:#fff!important;
 }
 
 .login-form{

@@ -12,9 +12,9 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NominaProject</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Nomina<span class="text-primary">Project</span></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -24,30 +24,30 @@
                         @if (Employee.IsLogged)
                         {
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-white link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Employees
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Employees" asp-action="Index">List of Employees</a></li>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Employees" asp-action="Create">Create New</a></li>
+                                <ul class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="Employees" asp-action="Index">List of Employees</a></li>
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="Employees" asp-action="Create">Create New</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-white link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Departments
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Departments" asp-action="Index">List of Departments</a></li>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="Departments" asp-action="Create">Create New</a></li>
+                                <ul class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="Departments" asp-action="Index">List of Departments</a></li>
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="Departments" asp-action="Create">Create New</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle text-white link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Job Positions
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="JobPositions" asp-action="Index">List of Jobs</a></li>
-                                    <li><a class="dropdown-item" asp-area="" asp-controller="JobPositions" asp-action="Create">Create New</a></li>
+                                <ul class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="JobPositions" asp-action="Index">List of Jobs</a></li>
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="JobPositions" asp-action="Create">Create New</a></li>
                                 </ul>
                             </li>
                         }
@@ -55,10 +55,10 @@
                         {
 
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                                <a class="nav-link text-white link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                                <a class="nav-link text-white link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                             </li>
                         }
                     </ul>
@@ -67,13 +67,13 @@
                         @if (Employee.IsLogged)
                         {
                             <li class="nav-item">
-                                <span class="nav-link btn text-dark" title="Manage">Hello @GetNameAndLastName.Name @GetNameAndLastName.LastName!</span>
+                                <span class="nav-link text-white link" title="Manage">Hello @GetNameAndLastName.Name @GetNameAndLastName.LastName!</span>
                             </li>
                             @using (Html.BeginForm("Logout", "Users"))
                             {
                                 <li class="nav-item">
                                     <form id="logoutForm" class="form-inline">
-                                        <button id="Logout" type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                        <input id="Logout" type="submit" class="nav-link text-white link" value="Logout" style="background: rgba(0,0,0,0);border: 0px;"/>
                                     </form>
                                 </li>
                             }
@@ -81,7 +81,7 @@
                         else
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-dark" id="login" asp-controller="Users" asp-action="Login">Login</a>
+                                <a class="nav-link text-white" id="login" asp-controller="Users" asp-action="Login">Login</a>
                             </li>
                         }
                     </ul>
