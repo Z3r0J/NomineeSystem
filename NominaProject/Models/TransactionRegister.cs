@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,12 +8,15 @@ namespace NominaProject.Models
 {
     public class TransactionRegister
     {
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
-        public int MyProperty { get; set; }
+        [Key]
+        public int IdTransaction { get; set; }
+        public int IdEmployee { get; set; }
+        public virtual Employee Employee { get; set; }
+        public int IdDeductionOrIncome { get; set; }
+        public int IdTypeTransaction { get; set; }
+        public virtual TypeTransaction TypeTransaction { get; set; }
+        public DateTime Date { get; set; }
+        public long Amount { get; set; }
+        public bool State { get; set; }
     }
 }

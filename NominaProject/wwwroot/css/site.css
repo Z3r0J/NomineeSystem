@@ -11,6 +11,13 @@ a.navbar-brand {
     padding:50px;
     color:rgb(204,204,204);
 }
+.select {
+    color: #289668;
+    background: white;
+    height: 34px;
+    position: relative;
+    float: right;
+}
 
 .login-form form {
     background-color:rgb(37,37,37);

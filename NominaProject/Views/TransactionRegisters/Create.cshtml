@@ -1,0 +1,84 @@
+﻿@model NominaProject.Models.TransactionRegister
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TypeDrop').on('change', function () {
+            const IdTypeTransaction = $('#TypeDrop option:selected').val();
+            $.ajax({
+                type: 'GET',
+                data: { IdTypeTransaction: IdTypeTransaction },
+                url: '@Url.Action("loadTypeTransaction", "TransactionRegisters")',
+                success: function (result) {
+                    let s = '<option value="-1">Select one</option>';
+                    for (var i = 0; i < result.length; i++) {
+                        s += '<option value="' + result[i].id + '">' + result[i].name + '</option>';
+                    }
+                    $('#DeductionOrIncome').html(s);
+                }
+            });
+        });
+    });
+</script>
+<h1>Create</h1>
+
+<h4>TransactionRegister</h4>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdEmployee" class="control-label"></label>
+                <select asp-for="IdEmployee" class="form-control" asp-items="ViewBag.Employee"></select>
+                <span asp-validation-for="IdEmployee" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdTypeTransaction" class="control-label"></label>
+                <select asp-for="IdTypeTransaction" id="TypeDrop" class="form-control" asp-items="ViewBag.TypeTransaction">
+                    <option value="-1">Select one</option>
+                </select>
+                <span asp-validation-for="IdTypeTransaction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdDeductionOrIncome" class="control-label"></label>
+                <select asp-for="IdDeductionOrIncome"  id="DeductionOrIncome" class="form-control">
+
+                </select>
+                <span asp-validation-for="IdDeductionOrIncome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="State" /> @Html.DisplayNameFor(model => model.State)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

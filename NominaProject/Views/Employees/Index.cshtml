@@ -4,60 +4,30 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<table class="table table-hover table-striped border border-light rounded shadow caption-top">
-    <caption><h2>List of Employees</h2></caption>
-    <thead class="border border-light rounded table-employee-color">
-        <tr>
-            <th>
-                Create
-            </th>
-            <th>
-                Information
-            </th>
-            <th>
-                Department
-            </th>
-            <th>
-                Monthly Salary
-            </th>
-            <th>
-                User
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="table-employee">
-                <td>
-                    <a asp-action="Create" class="badge badge-create"><i class="fa fa-square-plus"></i> Add</a>
-                </td>
-                <td>
-                    <div class="row">
-                        <b>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</b>
-                    </div>
-                    <div class="row">
-                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Documents)
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department.departmentName) -
-                    @Html.DisplayFor(modelItem => item.JobPosition.PositionName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonthlySalary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Users.UserName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdEmployee" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.IdEmployee" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdEmployee" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function CallChangefunc(id) {
+         $.ajax({
+             url: "@Url.Action("GetEmployees", "Employees")",
+             data: { id: id },
+            type: "GET",
+            dataType: "html",
+             success: function (data) {
+                 console.log(data);
+                //Whatever result you have got from your controller with html partial view replace with a specific html.
+                $("#myPartialView").html( data ); // HTML DOM replace
+            }
+        });
+    }
+</script>
+<span style="float:right">
+    Sort by Department:
+    <br />
+    <select asp-items="ViewBag.DepartmentId" onchange="CallChangefunc(this.value)" class="border border-dark rounded shadow-sm select">
+        <option value="0" class="option">All Data</option>
+    </select>
+</span>
+<div id="myPartialView">
+    <partial name="_GetEmployees" model="Model" />
+    @*@{Html.RenderPartial("_GetEmployees", Model); }*@
+</div>

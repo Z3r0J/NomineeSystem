@@ -23,6 +23,10 @@ namespace NominaProject.Data
         public DbSet<NominaProject.Models.Income> Income { get; set; }
         public DbSet<NominaProject.Models.Payroll> Payroll { get; set; }
         public DbSet<NominaProject.JobPosition> JobPosition { get; set; }
+        public DbSet<NominaProject.Models.TypeTransaction> TypeTransaction { get; set; }
+        public DbSet<NominaProject.Models.TransactionRegister> TransactionRegister { get; set; }
+
+
 
     }
 }

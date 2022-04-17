@@ -23,6 +23,7 @@ namespace NominaProject.Controllers
         public async Task<IActionResult> Index()
         {
             var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users).Include(e=>e.JobPosition);
+            ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
             return Employee.IsLogged ? View(await appDbContext.ToListAsync()): RedirectToAction("Index","Home");
         }
 
@@ -172,6 +173,17 @@ namespace NominaProject.Controllers
             }
 
             return View(employee);
+        }
+
+        public PartialViewResult GetEmployees(int id)
+        {
+            if (id<=0)
+            {
+                var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users).Include(e => e.JobPosition).ToList();
+                return PartialView("_GetEmployees",appDbContext);
+            }
+            var model = _context.Employees.Include(e => e.Department).Include(e => e.Users).Include(e => e.JobPosition).Where(x => x.DepartmentId == id).ToList();
+            return PartialView("_GetEmployees", model);
         }
 
         // POST: Employees/Delete/5
