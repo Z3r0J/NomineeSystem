@@ -1,6 +1,9 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+* {
+font-family:Poppins!important;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -175,19 +178,19 @@ a.navbar-brand {
     color: white;
     background: #14b99a !important;
     height: 65px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .table-department-color {
     color: white;
     background: #14b956 !important;
     height: 65px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .table-position-color {
     color: white;
     background: #cf7315 !important;
     height: 65px;
-    font-size: 20px;
+    font-size: 15px;
 }
 .details-header {
     background: #16bfc7;
