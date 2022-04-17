@@ -17,42 +17,54 @@
                 Monthly Salary
             </th>
             <th>
+                Net Sal.
+            </th>
+            <th>
                 User
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
+        @{var i = 0; }
         @foreach (var item in Model)
         {
-            <tr class="table-employee">
+        <tr class="table-employee">
+            <td>
+                <a asp-action="Create" class="badge badge-create"><i class="fa fa-square-plus"></i> Add</a>
+            </td>
+            <td>
+                <div class="row">
+                    <b>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</b>
+                </div>
+                <div class="row">
+                    &nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Documents)
+                </div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.departmentName) -
+                @Html.DisplayFor(modelItem => item.JobPosition.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlySalary)
+            </td>
+            @while (i != GetNameAndLastName.NetSalary.Count())
+            {
                 <td>
-                    <a asp-action="Create" class="badge badge-create"><i class="fa fa-square-plus"></i> Add</a>
+                    @GetNameAndLastName.NetSalary[i]
                 </td>
-                <td>
-                    <div class="row">
-                        <b>@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</b>
-                    </div>
-                    <div class="row">
-                        &nbsp;&nbsp;&nbsp;@Html.DisplayFor(modelItem => item.Documents)
-                    </div>
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Department.departmentName) -
-                    @Html.DisplayFor(modelItem => item.JobPosition.PositionName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MonthlySalary)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Users.UserName)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.IdEmployee" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.IdEmployee" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.IdEmployee" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
-                </td>
-            </tr>
+                i = i + 1;
+                break;
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.Users.UserName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdEmployee" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                <a asp-action="Details" asp-route-id="@item.IdEmployee" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
+                <a asp-action="Delete" asp-route-id="@item.IdEmployee" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

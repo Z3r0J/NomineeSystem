@@ -22,6 +22,6 @@ namespace NominaProject.Models
         public double MonthlySalary { get; set; }
         public int UsersIdUsers { get; set; }
         public virtual Users Users { get; set; }
-        public static bool IsLogged { get; set; } 
+        public static bool IsLogged { get; set; }
     }
 }

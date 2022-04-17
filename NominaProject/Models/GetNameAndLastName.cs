@@ -9,5 +9,6 @@ namespace NominaProject.Models
     {
         public static string Name { get; set; }
         public static string LastName { get; set; }
+        public static List<double> NetSalary { get; set; } = new List<double>();
     }
 }

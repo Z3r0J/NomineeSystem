@@ -20,13 +20,12 @@ a.navbar-brand {
 }
 
 .login-form form {
-    background-color:rgb(37,37,37);
-    max-width:400px;
-    margin:auto;
-    padding:40px 60px;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-
+    background-color: #fdfdfd;
+    max-width: 400px;
+    margin: auto;
+    padding: 40px 60px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 .form-employee {
     padding: 10px 10px 10px 10px;
@@ -36,9 +35,10 @@ a.navbar-brand {
 }
 .form-department {
     padding: 10px 10px 10px 10px;
-    background: linear-gradient(360deg, rgb(0 25 36) 0%, rgb(9 121 121) 35%, rgb(0 255 231) 100%);
-    color: white;
+    color: black;
     margin-bottom: 10px;
+    border-bottom: 2px solid #d6cfcf;
+
 }
 .form-position {
     padding: 10px 10px 10px 10px;
@@ -212,8 +212,9 @@ a.navbar-brand {
     font-size: 19px;
 }
 .form-back {
-    background-color: rgb(37,37,37);
+    background-color: #fdfdfd;
     color: #78c2ad;
+    border-radius: 15px;
 }
 .form-backd {
     background-color: rgb(37,37,37);
@@ -226,7 +227,7 @@ a.navbar-brand {
     background-color: #ededed;
 }
 label {
-    color:white;
+    color: black;
 }
 .login-form .form-name{
     text-align:center;
@@ -246,6 +247,20 @@ label {
     border-radius:10px;
     margin-bottom:25px;
     padding: 10px 20px;
+    border:0px;
+}
+
+.login-form .item:focus {
+        color: #78c2ad;
+        background-color: #fff;
+        border-color: #ffffff;
+        outline: 0;
+        box-shadow: 0 0 0 0rem rgb(13 110 253 / 25%)!important;
+        border-bottom: 5px !important;
+        border: 3px solid !important;
+        border-left: 0px !important;
+        border-right: 0px !important;
+        border-top: 0px !important;
 }
 
 .login-form .login-account{
@@ -257,17 +272,17 @@ label {
     color:#fff;
     margin-top:20px;
 }
-    .login-form .social-media {
-        max-width: 400px;
-        background-color: rgb(37,37,37);
-        margin: auto;
-        padding: 30px 0;
-        text-align: center;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        color:#78c2ad;
-        border-top:1px solid #dee9ff;
-    }
+.login-form .social-media {
+    max-width: 400px;
+    background-color: #fdfdfd;
+    margin: auto;
+    padding: 30px 0;
+    text-align: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: #78c2ad;
+    border-top: 1px solid #dee9ff;
+}
 .btn {
 display:block;
 width:100%;
@@ -294,7 +309,7 @@ margin-bottom:15px;
     width:45px;
     display:inline-block;
     height:45px;
-    background-color:#fff;
+    background-color:#000;
     line-height:45px;
 }
 

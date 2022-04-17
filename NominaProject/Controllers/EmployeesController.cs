@@ -24,6 +24,11 @@ namespace NominaProject.Controllers
         {
             var appDbContext = _context.Employees.Include(e => e.Department).Include(e => e.Users).Include(e=>e.JobPosition);
             ViewData["DepartmentId"] = new SelectList(_context.Department, "DepartmentId", "departmentName");
+            GetNameAndLastName.NetSalary.Clear();
+            foreach (var item in appDbContext.ToList())
+            {
+                GetNameAndLastName.NetSalary.Add(GetNetSalary(item.IdEmployee));
+            }
             return Employee.IsLogged ? View(await appDbContext.ToListAsync()): RedirectToAction("Index","Home");
         }
 
@@ -109,6 +114,26 @@ namespace NominaProject.Controllers
             ViewData["UsersIdUsers"] = new SelectList(_context.Users, "IdUsers", "UserName", employee.UsersIdUsers);
             ViewData["JobPositionId"] = new SelectList(_context.JobPosition, "IdPosition", "PositionName", employee.JobPositionId);
             return View(employee);
+        }
+
+        public double GetNetSalary(int id)
+        {
+            var NetSalary = 0.00;
+            var Transaction = _context.TransactionRegister.Where(x => x.IdTypeTransaction == 1);
+
+            var TransactionForEmployees = Transaction.Where(x => x.IdEmployee == id);
+            var Employees = _context.Employees.Where(x => x.IdEmployee == id).First();
+
+            if (TransactionForEmployees.Count() > 0) {
+
+                foreach (var item in TransactionForEmployees)
+                {
+                    NetSalary = Employees.MonthlySalary - item.Amount;
+                }
+                return NetSalary;
+            }
+
+            return Employees.MonthlySalary;
         }
 
         // POST: Employees/Edit/5

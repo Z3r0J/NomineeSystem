@@ -6,10 +6,10 @@
 
 
 <div class="login-form">
-    @using (Html.BeginForm("Login", "Users"))
+    @using (Html.BeginForm("Login", "Users",FormMethod.Post, new { @class = "border border-light shadow" }))
     {
         <div style="color:red;">@Html.ValidationSummary()</div>
-        <form action="#" method="post">
+        <form action="#"method="post">
             <div class="form-name">
                 <span>Login</span>
             </div>
@@ -25,7 +25,7 @@
 
         </form>
     }
-    <div class="social-media">
+    <div class="social-media border border-light shadow">
         <h5>Login With</h5>
         <div class="social-icons">
             <a href="#"><i class="fa-brands fa-facebook"></i></a>
