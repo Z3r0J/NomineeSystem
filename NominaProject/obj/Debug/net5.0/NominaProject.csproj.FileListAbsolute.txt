@@ -944,3 +944,17 @@ C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\N
 C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\ref\NominaProject.dll
 C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\NominaProject.pdb
 C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\NominaProject.genruntimeconfig.cache
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.barcodes.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.forms.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.io.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.kernel.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.layout.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.pdfa.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.sign.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.styledxmlparser.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.svg.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.commons.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\itext.html2pdf.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\obj\Debug\net5.0\Razor\Views\PdfExports\Index.cshtml.g.cs
