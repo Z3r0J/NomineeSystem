@@ -22,7 +22,8 @@ namespace NominaProject.Controllers
         // GET: TransactionRegisters
         public async Task<IActionResult> Index()
         {
-            return View(await _context.TransactionRegister.ToListAsync());
+            var appDbContext = _context.TransactionRegister.Include(e=>e.Employee);
+            return View(await appDbContext.ToListAsync());
         }
 
         // GET: TransactionRegisters/Details/5
@@ -64,6 +65,20 @@ namespace NominaProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (transactionRegister.IdTypeTransaction == 1)
+                {
+                    if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First())
+                    {
+                        ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName", transactionRegister.IdTypeTransaction);
+                        var list = _context.Employees.Select(x => new {
+                            Id = x.IdEmployee,
+                            Name = $"{x.FirstName} {x.LastName}"
+                        }).ToList();
+                        ViewData["Employee"] = new SelectList(list, "Id", "Name", transactionRegister.IdEmployee);
+                        ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First()}";
+                        return View();
+                    }
+                }
                 _context.Add(transactionRegister);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -119,6 +134,20 @@ namespace NominaProject.Controllers
             {
                 try
                 {
+                    if (transactionRegister.IdTypeTransaction == 1)
+                    {
+                        if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First())
+                        {
+                            ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName");
+                            var list = _context.Employees.Select(x => new {
+                                Id = x.IdEmployee,
+                                Name = $"{x.FirstName} {x.LastName}"
+                            }).ToList();
+                            ViewData["Employee"] = new SelectList(list, "Id", "Name");
+                            ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First()}";
+                            return View();
+                        }
+                    }
                     _context.Update(transactionRegister);
                     await _context.SaveChangesAsync();
                 }

@@ -59,6 +59,10 @@
                 <label asp-for="Amount" class="control-label"></label>
                 <input asp-for="Amount" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
+                @if (ViewBag.ErrorMessage != "")
+                {
+                    <span class="text-danger">@ViewBag.ErrorMessage</span>
+                }
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">

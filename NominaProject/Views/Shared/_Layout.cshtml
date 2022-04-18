@@ -11,6 +11,7 @@
     <script src="~/js/all.js"></script>
 </head>
 <body>
+    @{var Year = DateTime.Now.Year;}
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container">
@@ -50,6 +51,15 @@
                                     <li><a class="dropdown-item menu-element" asp-area="" asp-controller="JobPositions" asp-action="Create">Create New</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-white link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Transaction Log
+                                </a>
+                                <ul class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="TransactionRegisters" asp-action="Index">Logs</a></li>
+                                    <li><a class="dropdown-item menu-element" asp-area="" asp-controller="TransactionRegisters" asp-action="Create">Create New</a></li>
+                                </ul>
+                            </li>
                         }
                         else
                         {
@@ -73,7 +83,7 @@
                             {
                                 <li class="nav-item">
                                     <form id="logoutForm" class="form-inline">
-                                        <input id="Logout" type="submit" class="nav-link text-white link" value="Logout" style="background: rgba(0,0,0,0);border: 0px;"/>
+                                        <input id="Logout" type="submit" class="nav-link text-white link" value="Logout" style="background: rgba(0,0,0,0);border: 0px;" />
                                     </form>
                                 </li>
                             }
@@ -94,12 +104,30 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - NominaProject - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+        <footer class="shadow bg-dark text-white footer-style">
+            <div class="d-flex align-items-center justify-content-between mx-auto py-4 flex-wrap"
+                 style="width: 80%">
+                <div class="d-flex align-items-center">
+                    <a href="/" class="d-flex align-items-center p-0 text-dark">
+                        <span class="ml-4 h5 mb-0 font-weight-bold text-white">NominaProject</span>
+                    </a>
+                </div>
+                <div>
+                    <small class="ml-2">&copy; NomineeProject, @Year. All rights reserved.</small>
+                </div>
+                <div class="d-flex">
+                    <button class="btn btn-light btn-footer p-2">
+                        <i class="fa-brands fa-facebook" style="color:blue;"></i>
+                    </button>
+                    <button class="btn btn-light btn-footer p-2">
+                        <i class="fab fa-twitter" style="color:deepskyblue;"></i>
+                    </button>
+                    <button class="btn btn-light btn-footer p-2">
+                        <i class="fa-brands fa-instagram" style=" background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); color: black; border-radius: 3px;"></i>
+                    </button>
+                </div>
+            </div>
+        </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
