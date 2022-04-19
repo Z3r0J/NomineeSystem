@@ -1,0 +1,94 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/all.css" />
+    <script src="~/js/all.js"></script>
+</head>
+<body>
+    @{ var Date = DateTime.Now;}
+    <div class="container justify-content-between">
+        <h1 class="navbar-brand text-dark" style="font-size: 30px;">Nomina<span class="text-primary">Project</span> <span style="float:right;font-size:17px;">@Date</span><span style="float: right; font-size: 17px;">Created Date:&nbsp;</span></h1>
+        <h1 class="text-dark"><span style="float: right; font-size: 17px; margin-right: 54px; ">@GetNameAndLastName.Name @GetNameAndLastName.LastName</span><span style="float: right; font-size: 17px; margin-right: -1px; ">Created By: &nbsp;</span></h1>
+    </div>
+
+    <div class="container justify-content-center">
+        <table class="table table-hover table-striped border border-light rounded shadow caption-top">
+            <caption><h2>@ViewBag.DepartmentName Payroll Reports</h2></caption>
+            <thead class="border border-light rounded table-employee-color" style="background-color: #0d6efd !important;">
+                <tr>
+                    <th>
+                        Information
+                    </th>
+                    <th>
+                        Position
+                    </th>
+                    <th>
+                        Payroll
+                    </th>
+                    <th>
+                        Salary
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @if (ViewBag.list.Count != 0)
+            {
+                <tbody>
+                    @foreach (var item in ViewBag.list)
+                    {
+                        <tr class="table-report">
+                            <td>
+                                <div>
+                                    @item.FirstName @item.LastName
+                                </div>
+                                <div>
+                                    @item.Documents
+                                </div>
+                            </td>
+                            <td>
+                                @item.JobPosition.PositionName
+                            </td>
+                            <td>
+                                @item.Department.departmentName
+                            </td>
+                            <td>
+                                @item.MonthlySalary
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
+                        <td>
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td><b>Total: </b></td>
+                        <td>@ViewBag.Total</td>
+                    </tr>
+                </tbody>
+            }
+            else { <tbody>
+            <tr>
+            <td>
+            </td>
+            <td style="text-align:center;">No Employees in this payroll.</td>
+                <td></td>
+                <td></td>
+                <td>
+                </td>
+                </tr>
+                </tbody>}
+        </table>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

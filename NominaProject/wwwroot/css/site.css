@@ -221,6 +221,10 @@ a.navbar-brand {
     background: rgb(45 199 156 / 76%);
     color: white!important;
 }
+.table-report:hover {
+    background: rgb(13 110 253 / 75%);
+    color: white !important;
+}
 .table-position:hover {
     background: rgb(231 144 36 / 88%);
     color: white !important;
