@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NominaProject.Data;
+using DinkToPdf.Contracts;
+using DinkToPdf;
 
 namespace NominaProject
 {
@@ -25,6 +27,7 @@ namespace NominaProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
 

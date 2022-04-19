@@ -38,39 +38,53 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach (var item in ViewBag.list)
-                {
-                    <tr class="table-employee">
+            @if (ViewBag.list.Count != 0)
+            {
+                <tbody>
+                    @foreach (var item in ViewBag.list)
+                    {
+                        <tr class="table-report">
+                            <td>
+                                <div>
+                                    @item.FirstName @item.LastName
+                                </div>
+                                <div>
+                                    @item.Documents
+                                </div>
+                            </td>
+                            <td>
+                                @item.JobPosition.PositionName
+                            </td>
+                            <td>
+                                @item.Department.departmentName
+                            </td>
+                            <td>
+                                @item.MonthlySalary
+                            </td>
+                            <td></td>
+                        </tr>
+                    }
+                    <tr>
                         <td>
-                            <div>
-                                @item.FirstName @item.LastName
-                            </div>
-                            <div>
-                                @item.Documents
-                            </div>
-                        </td>
-                        <td>
-                            @item.JobPosition.PositionName
-                        </td>
-                        <td>
-                            @item.Department.departmentName
-                        </td>
-                        <td>
-                            @item.MonthlySalary
                         </td>
                         <td></td>
+                        <td></td>
+                        <td><b>Total: </b></td>
+                        <td>@ViewBag.Total</td>
                     </tr>
-                }
-                <tr>
-                    <td>
-                    </td>
-                    <td></td>
-                    <td></td>
-                    <td><b>Total: </b></td>
-                    <td>@ViewBag.Total</td>
+                </tbody>
+            }
+            else { <tbody>
+            <tr>
+            <td>
+            </td>
+            <td style="text-align:center;">No Employees in this payroll.</td>
+                <td></td>
+                <td></td>
+                <td>
+                </td>
                 </tr>
-            </tbody>
+                </tbody>}
         </table>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
