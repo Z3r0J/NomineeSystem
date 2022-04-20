@@ -11,7 +11,7 @@ namespace NominaProject.Models
         public int IdPayroll { get; set; }
         public string payName { get; set; }
 
-        public virtual ICollection<Department> Departments { get; set; }
+        public virtual ICollection<Department> Department { get; set; }
 
     }
 }

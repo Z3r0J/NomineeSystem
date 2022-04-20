@@ -61,21 +61,21 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdTransaction,IdEmployee,IdDeductionOrIncome,IdTypeTransaction,Date,Amount,State")] TransactionRegister transactionRegister)
+        public async Task<IActionResult> Create([Bind("IdTransaction,EmployeeIdEmployee,IdDeductionOrIncome,TypeTransactionIdTypeTransaction,Date,Amount,State")] TransactionRegister transactionRegister)
         {
             if (ModelState.IsValid)
             {
-                if (transactionRegister.IdTypeTransaction == 1)
+                if (transactionRegister.TypeTransactionIdTypeTransaction == 1)
                 {
-                    if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First())
+                    if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.EmployeeIdEmployee).Select(x => x.MonthlySalary).First())
                     {
-                        ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName", transactionRegister.IdTypeTransaction);
+                        ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName", transactionRegister.TypeTransactionIdTypeTransaction);
                         var list = _context.Employees.Select(x => new {
                             Id = x.IdEmployee,
                             Name = $"{x.FirstName} {x.LastName}"
                         }).ToList();
-                        ViewData["Employee"] = new SelectList(list, "Id", "Name", transactionRegister.IdEmployee);
-                        ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First()}";
+                        ViewData["Employee"] = new SelectList(list, "Id", "Name", transactionRegister.EmployeeIdEmployee);
+                        ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.EmployeeIdEmployee).Select(x => x.MonthlySalary).First()}";
                         return View();
                     }
                 }
@@ -84,12 +84,12 @@ namespace NominaProject.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName",transactionRegister.IdTypeTransaction);
+            ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName",transactionRegister.TypeTransactionIdTypeTransaction);
             var Lista = _context.Employees.Select(x => new {
                 Id = x.IdEmployee,
                 Name = $"{x.FirstName} {x.LastName}"
             }).ToList();
-            ViewData["Employee"] = new SelectList(Lista, "Id", "Name",transactionRegister.IdEmployee);
+            ViewData["Employee"] = new SelectList(Lista, "Id", "Name",transactionRegister.EmployeeIdEmployee);
 
 
             return View(transactionRegister);
@@ -123,7 +123,7 @@ namespace NominaProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdTransaction,IdEmployee,IdDeductionOrIncome,IdTypeTransaction,Date,Amount,State")] TransactionRegister transactionRegister)
+        public async Task<IActionResult> Edit(int id, [Bind("IdTransaction,EmployeeIdEmployee,IdDeductionOrIncome,TypeTransactionIdTypeTransaction,Date,Amount,State")] TransactionRegister transactionRegister)
         {
             if (id != transactionRegister.IdTransaction)
             {
@@ -134,9 +134,9 @@ namespace NominaProject.Controllers
             {
                 try
                 {
-                    if (transactionRegister.IdTypeTransaction == 1)
+                    if (transactionRegister.TypeTransactionIdTypeTransaction == 1)
                     {
-                        if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First())
+                        if (transactionRegister.Amount >= _context.Employees.Where(x => x.IdEmployee == transactionRegister.EmployeeIdEmployee).Select(x => x.MonthlySalary).First())
                         {
                             ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName");
                             var list = _context.Employees.Select(x => new {
@@ -144,7 +144,7 @@ namespace NominaProject.Controllers
                                 Name = $"{x.FirstName} {x.LastName}"
                             }).ToList();
                             ViewData["Employee"] = new SelectList(list, "Id", "Name");
-                            ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.IdEmployee).Select(x => x.MonthlySalary).First()}";
+                            ViewBag.ErrorMessage = $"The amount of deduction must be between {_context.Employees.Where(x => x.IdEmployee == transactionRegister.EmployeeIdEmployee).Select(x => x.MonthlySalary).First()}";
                             return View();
                         }
                     }
@@ -164,12 +164,12 @@ namespace NominaProject.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName",transactionRegister.IdTypeTransaction);
+            ViewData["TypeTransaction"] = new SelectList(_context.TypeTransaction, "IdTypeTransaction", "TypeName",transactionRegister.TypeTransactionIdTypeTransaction);
             var Lista = _context.Employees.Select(x => new {
                 Id = x.IdEmployee,
                 Name = $"{x.FirstName} {x.LastName}"
             }).ToList();
-            ViewData["Employee"] = new SelectList(Lista, "Id", "Name", transactionRegister.IdEmployee);
+            ViewData["Employee"] = new SelectList(Lista, "Id", "Name", transactionRegister.EmployeeIdEmployee);
             return View(transactionRegister);
         }
         public JsonResult loadTypeTransaction(int IdTypeTransaction)

@@ -9,8 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-hover table-striped border border-light rounded shadow caption-top">
+    <thead class="border border-light rounded table-position-color">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Employee)
@@ -19,7 +19,7 @@
                 @Html.DisplayNameFor(model => model.IdDeductionOrIncome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdTypeTransaction)
+                @Html.DisplayNameFor(model => model.TypeTransactionIdTypeTransaction)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -38,13 +38,13 @@
 {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.IdEmployee)
+                @Html.DisplayFor(modelItem => item.Employee.FirstName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdDeductionOrIncome)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdTypeTransaction)
+                @Html.DisplayFor(modelItem => item.TypeTransactionIdTypeTransaction)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)

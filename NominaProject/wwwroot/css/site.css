@@ -4,6 +4,15 @@ for details on configuring this project to bundle and minify static web assets. 
 * {
 font-family:Poppins!important;
 }
+
+
+.border-left {
+    border-top: 0px !important;
+    border-left-width: 5px !important;
+    border-right: 0px !important;
+    border-bottom: 0px !important;
+}
+
 .link {
     padding: 20px 20px;
     font-size: 13px;
@@ -138,6 +147,19 @@ a.navbar-brand {
 .badge-create:hover{
     color:white;
     background: #1f848f;
+}
+.badge-report {
+    background: #308c7f;
+    width: 104px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-report:hover {
+    color: white;
+    background: #3db4a4;
 }
 .badge-add-department {
     background: #07a369;

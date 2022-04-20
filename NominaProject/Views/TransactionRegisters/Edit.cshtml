@@ -33,16 +33,16 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdTransaction" />
             <div class="form-group">
-                <label asp-for="IdEmployee" class="control-label"></label>
-                <select asp-for="IdEmployee" class="form-control" asp-items="ViewBag.Employee"></select>
-                <span asp-validation-for="IdEmployee" class="text-danger"></span>
+                <label asp-for="EmployeeIdEmployee" class="control-label"></label>
+                <select asp-for="EmployeeIdEmployee" class="form-control" asp-items="ViewBag.Employee"></select>
+                <span asp-validation-for="EmployeeIdEmployee" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdTypeTransaction" class="control-label"></label>
-                <select asp-for="IdTypeTransaction" id="TypeDrop" class="form-control" asp-items="ViewBag.TypeTransaction">
+                <label asp-for="TypeTransactionIdTypeTransaction" class="control-label"></label>
+                <select asp-for="TypeTransactionIdTypeTransaction" id="TypeDrop" class="form-control" asp-items="ViewBag.TypeTransaction">
                     <option value="-1">Select one</option>
                 </select>
-                <span asp-validation-for="IdTypeTransaction" class="text-danger"></span>
+                <span asp-validation-for="TypeTransactionIdTypeTransaction" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdDeductionOrIncome" class="control-label"></label>

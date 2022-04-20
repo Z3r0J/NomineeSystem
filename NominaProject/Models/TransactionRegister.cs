@@ -10,10 +10,10 @@ namespace NominaProject.Models
     {
         [Key]
         public int IdTransaction { get; set; }
-        public int IdEmployee { get; set; }
+        public int EmployeeIdEmployee { get; set; }
         public virtual Employee Employee { get; set; }
         public int IdDeductionOrIncome { get; set; }
-        public int IdTypeTransaction { get; set; }
+        public int TypeTransactionIdTypeTransaction { get; set; }
         public virtual TypeTransaction TypeTransaction { get; set; }
         public DateTime Date { get; set; }
         public long Amount { get; set; }

@@ -43,14 +43,14 @@
                     @Html.DisplayFor(modelItem => item.departmentLeader)
                 </td>
                <td>
-                    @Html.DisplayFor(modelItem => item.IdPayroll)
+                    @Html.DisplayFor(modelItem => item.Payroll.payName)
                 </td>
                <td>
                    <a asp-action="Edit" asp-route-id="@item.DepartmentId" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
                    <a asp-action="Details" asp-route-id="@item.DepartmentId" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
                    <a asp-action="Delete" asp-route-id="@item.DepartmentId" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
 
-                   <a asp-controller="PdfCreate" asp-action="CreatePDF" target="_blank" asp-route-id="@item.DepartmentId" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Reports</a>
+                   <a asp-controller="PdfCreate" asp-action="CreatePDF" target="_blank" asp-route-id="@item.DepartmentId" class="badge badge-report"><i class="fa fa-file"></i> Reports</a>
                </td>
             </tr>
         }

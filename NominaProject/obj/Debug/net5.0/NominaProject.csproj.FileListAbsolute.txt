@@ -946,3 +946,4 @@ C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\N
 C:\Users\junio\source\repos\Z3r0J\NomineeSystem\NominaProject\obj\Debug\net5.0\NominaProject.genruntimeconfig.cache
 C:\Users\admin\source\repos\NominaProject\NominaProject\obj\Debug\net5.0\Razor\Views\PdfExports\Index.cshtml.g.cs
 C:\Users\admin\source\repos\NominaProject\NominaProject\bin\Debug\net5.0\DinkToPdf.dll
+C:\Users\admin\source\repos\NominaProject\NominaProject\obj\Debug\net5.0\Razor\Views\Users\DashBoard.cshtml.g.cs

@@ -119,9 +119,9 @@ namespace NominaProject.Controllers
         public double GetNetSalary(int id)
         {
             var NetSalary = 0.00;
-            var Transaction = _context.TransactionRegister.Where(x => x.IdTypeTransaction == 1);
+            var Transaction = _context.TransactionRegister.Where(x => x.TypeTransactionIdTypeTransaction == 1);
 
-            var TransactionForEmployees = Transaction.Where(x => x.IdEmployee == id);
+            var TransactionForEmployees = Transaction.Where(x => x.EmployeeIdEmployee == id);
             var Employees = _context.Employees.Where(x => x.IdEmployee == id).First();
 
             if (TransactionForEmployees.Count() > 0) {

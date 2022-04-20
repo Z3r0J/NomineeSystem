@@ -26,6 +26,23 @@ namespace NominaProject.Controllers
             return View();
         }
 
+        public ActionResult DashBoard() {
+            ViewData["NomineeTotal"] = _context.Employees.Select(x=>x.MonthlySalary).Sum();
+            ViewData["NumberDepartment"] = _context.Department.Select(x => x.DepartmentId).Count();
+            ViewData["NumberEmployees"] = _context.Employees.Select(x => x.IdEmployee).Count();
+            ViewData["TransactionTotal"] = _context.TransactionRegister.Select(x => x.Amount).Sum();
+            var count = _context.Employees.
+                Include(e => e.Department).ToList().
+                GroupBy(e => e.Department.departmentName).
+                Select(y => new DashBoardInfo{ Department = y.Key, count = y.Count() }).
+                OrderByDescending(y=>y.count).First();
+
+            ViewData["BiggestDepartment"] = $"{count.Department} - {count.count}";
+            ViewData["NumberTransaction"] = _context.TransactionRegister.Select(x => x.IdTransaction).Count();
+
+            return View();
+        }
+
         // POST: Users
         [HttpPost]
         public ActionResult Login(Users us)
