@@ -34,7 +34,7 @@ namespace NominaProject.Controllers
                 return NotFound();
             }
 
-            var transactionRegister = await _context.TransactionRegister
+            var transactionRegister = await _context.TransactionRegister.Include(e=>e.TypeTransaction).Include(e=>e.Employee)
                 .FirstOrDefaultAsync(m => m.IdTransaction == id);
             if (transactionRegister == null)
             {

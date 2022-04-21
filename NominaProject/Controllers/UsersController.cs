@@ -51,9 +51,6 @@ namespace NominaProject.Controllers
             {
                 using (AppDbContext dbContext = _context)
                 {
-                    //var user = from d in dbContext.Users
-                    //           where d.UserName == us.UserName && d.Password == us.Password
-                    //           select d;
 
                     var lst = from d in dbContext.Employees
                               join s in dbContext.Users
@@ -75,7 +72,7 @@ namespace NominaProject.Controllers
                         Employee.IsLogged = true;
                         GetNameAndLastName.Name = lst.First().FirstName;
                         GetNameAndLastName.LastName = lst.First().LastName;
-                        return RedirectToAction("Index","Employees");
+                        return RedirectToAction("DashBoard","Users");
                     }
                     else
                     { 

@@ -3,23 +3,21 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table table-hover table-striped border border-light rounded shadow caption-top">
-    <thead class="border border-light rounded table-position-color">
+    <caption><h2>List of Transaction Registers</h2></caption>
+    <thead class="border border-light rounded table-transaction-color">
         <tr>
+            <th>
+                Create
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Employee)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdDeductionOrIncome)
+                Id
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeTransactionIdTypeTransaction)
+            Type
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Date)
@@ -33,34 +31,37 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-@foreach (var item in Model)
-{
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.FirstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDeductionOrIncome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeTransactionIdTypeTransaction)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdTransaction">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdTransaction">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdTransaction">Delete</a>
-            </td>
-        </tr>
-}
+    <tbody class="table-transaction">
+        @foreach (var item in Model)
+        {
+            <tr class="table-transaction">
+                <td>
+                    <a asp-action="Create" class="badge badge-add-registers"><i class="fa fa-square-plus"></i> Add</a>
+                </td>
+                <td>
+                    @item.Employee.FirstName @item.Employee.LastName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDeductionOrIncome)
+                </td>
+                <td>
+                    @item.TypeTransactionIdTypeTransaction
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @item.Amount.ToString("C")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdTransaction" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdTransaction"class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdTransaction"class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

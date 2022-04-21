@@ -4,51 +4,60 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<div>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group shadow">
+                <li class="list-group-item details-header" style="background: #429834 !important;">
+                    <div class="lead"><h3>Details of Transaction Registers</h3></div>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Employee:</span>
+                    <br />
+                    <span>@Html.DisplayFor(model => model.Employee.FirstName) @Html.DisplayFor(model => model.Employee.LastName)</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">
+                        Id Deduction:
+                    </span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.IdDeductionOrIncome)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">
+                        Type:
+                    </span>
+                    <br />
+                    <span>
+                        @Model.TypeTransaction.TypeName
+                    </span>
+                </li>
 
-<div>
-    <h4>TransactionRegister</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeIdEmployee)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeIdEmployee)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDeductionOrIncome)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDeductionOrIncome)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TypeTransactionIdTypeTransaction)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TypeTransactionIdTypeTransaction)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.State)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.State)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.IdTransaction">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+                <li class="list-group-item">
+                    <span class="lead">
+                        Date:
+                    </span>
+                    <br />
+                    <span>
+                        @Model.Date
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">
+                        Amount:
+                    </span>
+                    <br />
+                    <span>
+                        @Model.Amount.ToString("C")
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Edit" asp-route-id="@Model.IdTransaction" class="badge badge-edit">Edit</a> |
+                    <a asp-action="Index" class="badge badge-back">Back to List</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

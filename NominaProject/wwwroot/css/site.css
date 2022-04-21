@@ -239,6 +239,29 @@ a.navbar-brand {
     color:white;
     background: #dc3545;
 }
+.badge-add-registers {
+    background: #349857;
+    width: 74px;
+    height: 30px;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    color: white;
+}
+.badge-add-registers:hover{
+    color: white;
+    background: #10bb77;
+}
+.table-transaction-color {
+    color: white;
+    background: #429834 !important;
+    height: 65px;
+    font-size: 15px;
+}
+.table-transaction:hover {
+    background: rgb(79 152 52 / 76%) !important;
+    color:white!important;
+}
 .table-employee:hover {
     background: rgb(45 199 156 / 76%);
     color: white!important;
