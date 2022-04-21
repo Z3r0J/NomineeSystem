@@ -1,0 +1,41 @@
+﻿@model NominaProject.Models.Department
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+        <div class="row">
+            <div class="col-8">
+                <ul class="list-group shadow">
+                    <li class="list-group-item" style=" background: #167ec7; color:#fff;">
+                        <span class="lead"><h3>Details of @Html.DisplayFor(model => model.departmentName)</h3></span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Department Name:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.departmentName)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Location:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.location)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Leader:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.departmentLeader)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <span class="lead">Payroll:</span>
+                        <br />
+                        <span>@Html.DisplayFor(model => model.Payroll.payName)</span>
+                    </li>
+                    <li class="list-group-item">
+                        <a asp-action="Edit" asp-route-id="@Model.DepartmentId" class="badge badge-edit">Edit</a> |
+                        <a asp-action="Index" class="badge badge-back">Back to List</a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+</div>

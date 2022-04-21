@@ -1,0 +1,107 @@
+﻿@model NominaProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#DepartmentDrop').on('change', function () {
+            const DepartmentId = $('#DepartmentDrop option:selected').val();
+            $.ajax({
+                type: 'GET',
+                data: { DepartmentId: DepartmentId },
+                url: '@Url.Action("loadPosition","Employees")',
+                success: function (result) {
+                    let s = '<option value="-1">Select a Job Position</option>';
+                    for (var i = 0; i < result.length; i++) {
+                        s += '<option value="' + result[i].id + '">' + result[i].name + '</option>';
+                    }
+                    $('#JobPosition').html(s);
+                }
+            });
+        });
+    });
+</script>
+<div class="row justify-content-center" style=" margin: 0px 0px 51px 0px;">
+    <div class="col-md-6 border border-light shadow rounded form-back">
+        <div class="row text-center form-department">
+            <h4>Edit Employee's</h4>
+        </div>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdEmployee" />
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <span class="icon"><i class="fa fa-id-card"></i></span>
+                    <label asp-for="Documents" class="control-label"></label>
+                    <input asp-for="Documents" class="form-control form-input" />
+                    <span asp-validation-for="Documents" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <span class="icon2"><i class="fa fa-user"></i></span>
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control form-input" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <span class="icon"><i class="fa fa-image-portrait"></i></span>
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control form-input" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <span class="icon2"><i class="fa fa-building"></i></span>
+                    <label asp-for="DepartmentId" class="control-label"></label>
+                    <select asp-for="DepartmentId" id="DepartmentDrop" class="form-control form-input" asp-items="ViewBag.DepartmentId"></select>
+                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <span class="icon"><i class="fa fa-chart-line"></i></span>
+                    <label asp-for="JobPositionId" class="control-label"></label>
+                    <select asp-for="JobPositionId" id="JobPosition" class="form-control form-input" asp-items="ViewBag.JobPositionId"></select>
+                    <span asp-validation-for="JobPositionId" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <span class="icon2"><i class="fa fa-hand-holding-dollar"></i></span>
+                    <label asp-for="MonthlySalary" class="control-label"></label>
+                    <input asp-for="MonthlySalary" class="form-control form-input" />
+                    @if (ViewBag.ErroMessage != "")
+                    {
+                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                    }
+                    else
+                    {
+
+                    }
+                    <span asp-validation-for="MonthlySalary" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row input-i">
+                <div class="form-group">
+                    <label asp-for="UsersIdUsers" class="control-label"></label>
+                    <select asp-for="UsersIdUsers" class="form-control form-input" asp-items="ViewBag.UsersIdUsers"></select>
+                    <span asp-validation-for="UsersIdUsers" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row bottom-form">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Save" class="btn btn-create" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

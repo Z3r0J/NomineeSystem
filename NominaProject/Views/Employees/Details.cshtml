@@ -1,0 +1,54 @@
+﻿@model NominaProject.Models.Employee
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group shadow">
+                <li class="list-group-item details-header">
+                    <div class="lead"><h3>Details of @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h3></div>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Information:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)
+                    </span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Documents)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Department:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Department.departmentName) - @Html.DisplayFor(model => model.JobPosition.PositionName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Monthly Salary:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.MonthlySalary)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">UserName:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Users.UserName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Edit" asp-route-id="@Model.IdEmployee" class="badge badge-edit">Edit</a> |
+                    <a asp-action="Index" class="badge badge-back">Back to List</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

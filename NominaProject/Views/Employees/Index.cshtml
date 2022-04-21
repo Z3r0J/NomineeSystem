@@ -1,0 +1,33 @@
+﻿@model IEnumerable<NominaProject.Models.Employee>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    function CallChangefunc(id) {
+         $.ajax({
+             url: "@Url.Action("GetEmployees", "Employees")",
+             data: { id: id },
+            type: "GET",
+            dataType: "html",
+             success: function (data) {
+                 console.log(data);
+                //Whatever result you have got from your controller with html partial view replace with a specific html.
+                $("#myPartialView").html( data ); // HTML DOM replace
+            }
+        });
+    }
+</script>
+<span style="float:right">
+    Sort by Department:
+    <br />
+    <select asp-items="ViewBag.DepartmentId" onchange="CallChangefunc(this.value)" class="border border-dark rounded shadow-sm select">
+        <option value="0" class="option">All Data</option>
+    </select>
+</span>
+<div id="myPartialView">
+    <partial name="_GetEmployees" model="Model" />
+    @*@{Html.RenderPartial("_GetEmployees", Model); }*@
+</div>

@@ -1,0 +1,93 @@
+﻿@model NominaProject.Models.TransactionRegister
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TypeDrop').on('change', function () {
+            const IdTypeTransaction = $('#TypeDrop option:selected').val();
+            $.ajax({
+                type: 'GET',
+                data: { IdTypeTransaction: IdTypeTransaction },
+                url: '@Url.Action("loadTypeTransaction", "TransactionRegisters")',
+                success: function (result) {
+                    let s = '<option value="-1">Select one</option>';
+                    for (var i = 0; i < result.length; i++) {
+                        s += '<option value="' + result[i].id + '">' + result[i].name + '</option>';
+                    }
+                    $('#DeductionOrIncome').html(s);
+                }
+            });
+        });
+    });
+</script>
+
+<div class="row justify-content-center">
+    <div class="col-md-6 border border-light shadow rounded form-back">
+        <div class="row text-center form-department">
+            <h4>Transaction Registers</h4>
+        </div>
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <label asp-for="EmployeeIdEmployee" class="control-label"></label>
+                    <select asp-for="EmployeeIdEmployee" class="form-control form-input" asp-items="ViewBag.Employee"></select>
+                    <span asp-validation-for="EmployeeIdEmployee" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="TypeTransactionIdTypeTransaction" class="control-label"></label>
+                    <select asp-for="TypeTransactionIdTypeTransaction" id="TypeDrop" class="form-control form-input" asp-items="ViewBag.TypeTransaction">
+                        <option value="-1">Select one</option>
+                    </select>
+                    <span asp-validation-for="TypeTransactionIdTypeTransaction" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <label asp-for="IdDeductionOrIncome" class="control-label"></label>
+                    <select asp-for="IdDeductionOrIncome" id="DeductionOrIncome" class="form-control form-input">
+                    </select>
+                    <span asp-validation-for="IdDeductionOrIncome" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control form-input" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row input-i">
+                <div class="form-group col-md-6">
+                    <label asp-for="Amount" class="control-label"></label>
+                    <input asp-for="Amount" class="form-control form-input" />
+                    <span asp-validation-for="Amount" class="text-danger"></span>
+                    @if (ViewBag.ErrorMessage != "")
+                    {
+                        <span class="text-danger">@ViewBag.ErrorMessage</span>
+                    }
+                </div>
+                <div class="form-group form-check col-md-6">
+                    <label class="form-check-label">
+                        <input class="form-check-input" asp-for="State" /> @Html.DisplayNameFor(model => model.State)
+                    </label>
+                </div>
+            </div>
+            <div class="row bottom-form">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+                <div class="form-group col-md-6">
+                    <a asp-action="Index" class="btn btn-danger">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

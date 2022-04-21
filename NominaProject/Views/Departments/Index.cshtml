@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NominaProject.Models.Department>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<table class="table table-hover table-striped border border-light rounded shadow caption-top">
+    <caption><h2>List of Department</h2></caption>
+    <thead class="border border-light rounded table-department-color">
+        <tr>
+            <th>
+                Create
+            </th>
+            <th>
+                Department Name
+            </th>
+            <th>
+                Location
+            </th>
+            <th>
+                Leader
+            </th>
+            <th>
+                Payroll
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="table-department">
+                <td>
+                    <a asp-action="Create" class="badge badge-add-department"><i class="fa fa-square-plus"></i> Add</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.departmentLeader)
+                </td>
+               <td>
+                    @Html.DisplayFor(modelItem => item.Payroll.payName)
+                </td>
+               <td>
+                   <a asp-action="Edit" asp-route-id="@item.DepartmentId" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                   <a asp-action="Details" asp-route-id="@item.DepartmentId" class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
+                   <a asp-action="Delete" asp-route-id="@item.DepartmentId" class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+
+                   <a asp-controller="PdfCreate" asp-action="CreatePDF" target="_blank" asp-route-id="@item.DepartmentId" class="badge badge-report"><i class="fa fa-file"></i> Reports</a>
+               </td>
+            </tr>
+        }
+    </tbody>
+</table>

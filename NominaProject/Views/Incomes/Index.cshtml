@@ -1,0 +1,48 @@
+﻿@model IEnumerable<NominaProject.Models.Income>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.incomeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.apply)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.state)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.incomeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apply)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.state)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.incomeId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.incomeId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.incomeId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

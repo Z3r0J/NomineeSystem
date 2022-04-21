@@ -1,0 +1,64 @@
+﻿@model NominaProject.JobPosition
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <div class="row">
+        <div class="col-8">
+            <ul class="list-group shadow">
+                <li class="list-group-item" style="background: #ef9e26; color: white;">
+                    <div class="lead"><h3>Details of @Html.DisplayFor(model => model.PositionName)</h3></div>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Position Name:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.PositionName)
+                    </span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Department:</span>
+                    <br />
+                    <span>
+                        @Html.DisplayFor(model => model.Department.departmentName)
+                    </span>
+                </li>
+
+                <li class="list-group-item">
+                    <span class="lead">Risk Level:</span>
+                    <br />
+                    @if (Model.RiskLevel == "Bajo")
+                    {
+                        <span class="badge btn-success">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                    else if (Model.RiskLevel == "Medio")
+                    {
+                        <span class="badge btn-warning">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                    else
+                    {
+                        <span class="badge btn-danger">@Html.DisplayFor(model => model.RiskLevel)</span>
+                    }
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Maximum Salary:</span>
+                    <br />
+                    <span>@Html.DisplayFor(model => model.MaxSalary)</span>
+                </li>
+                <li class="list-group-item">
+                    <span class="lead">Minimum Salary:</span>
+                    <br />
+                    <span>@Html.DisplayFor(model => model.MinSalary)</span>
+                </li>
+                <li class="list-group-item">
+                    <a asp-action="Edit" asp-route-id="@Model.IdPosition" class="badge badge-edit">Edit</a> |
+                    <a asp-action="Index" class="badge badge-back">Back to List</a>
+                </li>
+            </ul>
+        </div>
+
+           </div>
+        </div>

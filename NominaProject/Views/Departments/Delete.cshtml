@@ -1,0 +1,31 @@
+﻿@model NominaProject.Models.Department
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="row justify-content-center">
+    <div class="col-8">
+        <ul class="list-group shadow">
+            <li class="list-group-item" style="background: #e32525; color: white; text-align:center">
+                <h3>Delete Department</h3>
+            </li>
+            <li class="list-group-item">
+                <span class="lead" style="font-size:1.65rem!important;">Are you sure you want to delete this?</span>
+            </li>
+            <li class="list-group-item">
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="DepartmentId" />
+                    <div class="row input-i">
+                        <div class="form-group col-md-6">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                        </div>
+                        <div class="form-group col-md-6">
+                            <a asp-action="Index" class="btn btn-info">Back to List</a>
+                        </div>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>

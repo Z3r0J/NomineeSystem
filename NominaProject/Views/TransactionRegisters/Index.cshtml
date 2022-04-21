@@ -1,0 +1,67 @@
+﻿@model IEnumerable<NominaProject.Models.TransactionRegister>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<table class="table table-hover table-striped border border-light rounded shadow caption-top">
+    <caption><h2>List of Transaction Registers</h2></caption>
+    <thead class="border border-light rounded table-transaction-color">
+        <tr>
+            <th>
+                Create
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                Id
+            </th>
+            <th>
+            Type
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody class="table-transaction">
+        @foreach (var item in Model)
+        {
+            <tr class="table-transaction">
+                <td>
+                    <a asp-action="Create" class="badge badge-add-registers"><i class="fa fa-square-plus"></i> Add</a>
+                </td>
+                <td>
+                    @item.Employee.FirstName @item.Employee.LastName
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdDeductionOrIncome)
+                </td>
+                <td>
+                    @item.TypeTransactionIdTypeTransaction
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @item.Amount.ToString("C")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdTransaction" class="badge badge-edit"><i class="fa fa-pen-to-square"></i> Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.IdTransaction"class="badge badge-details"><i class="fa fa-circle-info"></i> Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.IdTransaction"class="badge badge-delete"><i class="fa fa-trash-alt"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
