@@ -1,10 +1,22 @@
 # Sistema de Nóminas
-Este es un proyecto de sistema de nóminas que ayuda a gestionar los empleados de una compañia (Sigue en desarrollo, la rama con las actualizaciones mas recientes es "Features")
+Este es un proyecto de sistema de nóminas que ayuda a gestionar los empleados de una compañia 
+
+![](https://i.imgur.com/FYMbbnX.png)
+> Pagina principal
+
+![](https://i.imgur.com/0ZNScib.png)
+>Login
+
+![](https://i.imgur.com/q0jWL55.png)
+>Dashboard
+
+![](https://i.imgur.com/OiVuyJj.png)
+>Vista de empleados
 
 ## Requisitos 📋
-[Visual Studio](https://visualstudio.microsoft.com/es/downloads/)
-[SQL Server](https://www.microsoft.com/es-es/sql-server/sql-server-downloads)
-[Git](https://git-scm.com/downloads)
+- [Visual Studio](https://visualstudio.microsoft.com/es/downloads/)
+- [SQL Server](https://www.microsoft.com/es-es/sql-server/sql-server-downloads)
+- [Git](https://git-scm.com/downloads)
 
 ## Instalación 🔧
 1. Clonar el proyacto usando Git ejecutando:
@@ -22,6 +34,8 @@ Reemplazando '(localdb)\\MSSQLLOCALDB' con tu conexion de SQL Server.
 `Update-Database`
 5. Abrir SQL Server Buscar la base de datos creada y agregar un usuario y asignar ese usuario a un empleado luego iniciar sesion
 
+> Nota:  Si tiene problemas al realizar las migraciones puede ejecutar los scripts de 'NomineeSQL.sql' para obtener la base de datos.
+
 
 
 ## Ejecutando las pruebas ⚙️
@@ -30,7 +44,7 @@ Despues de haber realizado la instalacion asegurese que antes de ejecutar el pro
 Debe cambiarlo a NominaProject:
 ![](https://i.imgur.com/aFWkAG3.png)
 
-#### Las tablas que se han creado son las siguientes:
+#### Las modelos que se han creado son las siguientes:
 - Deduction.cs
 - Department.cs
 - Employee.cs
@@ -200,3 +214,4 @@ public class Users
 ## ----------------------------------------
 
  Creado con ❤️ por [Junior06sre](https://github.com/Junior06sre) 😊
+ 
