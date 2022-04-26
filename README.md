@@ -31,12 +31,32 @@ Debe cambiarlo a NominaProject:
 ![](https://i.imgur.com/aFWkAG3.png)
 
 #### Las tablas que se han creado son las siguientes:
+- Deduction.cs
 - Department.cs
 - Employee.cs
+- ErrorViewMode.cs
+- GetNameAndLastName.cs
+- Income.cs
 - JobPosition.cs
+- Payroll.cs
+- TransactionRegister.cs
+- TransactionRegister.cs
 - Users.cs
 
 Estas se encuentran en la siguiente carpeta: [Models](https://github.com/Z3r0J/NomineeSystem/tree/Views_Design/NominaProject/Models "Models")
+
+##### Deduction:
+```csharp
+public class Deduction
+    {
+        [Key]
+        public int IdDeduction { get; set; }
+        public string DeductionName { get; set; }
+        public bool Apply { get; set; }
+        public char State { get; set; }
+    }
+
+```
 
 ##### Department:
 
@@ -74,6 +94,35 @@ public class Employee
         public static bool IsLogged { get; set; } 
     }
 ```
+##### ErrorViewModel:
+```csharp
+public class ErrorViewModel
+    {
+        public string RequestId { get; set; }
+
+        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+    }
+```
+##### GetNameAndLastName:
+```csharp
+public class GetNameAndLastName
+    {
+        public static string Name { get; set; }
+        public static string LastName { get; set; }
+        public static List<double> NetSalary { get; set; } = new List<double>();
+    }
+```
+##### Income:
+```csharp
+    public class Income
+    {
+        [Key]
+        public int incomeId { get; set; } 
+        public string incomeName { get; set; }
+        public bool apply { get; set; }
+        public string state { get; set; }
+    }
+```
 ##### JobPosition:
 ```csharp
 public class JobPosition
@@ -88,6 +137,40 @@ public class JobPosition
         public int MaxSalary { get; set; }
         public int MinSalary { get; set; }
         public virtual ICollection<Employee> Employees { get; set; }
+    }
+```
+##### Payroll:
+```csharp
+public class Payroll
+    {   [Key]
+        public int IdPayroll { get; set; }
+        public string payName { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
+    }
+```
+##### TransactionRegister:
+```csharp
+public class TransactionRegister
+    {
+        [Key]
+        public int IdTransaction { get; set; }
+        public int IdEmployee { get; set; }
+        public virtual Employee Employee { get; set; }
+        public int IdDeductionOrIncome { get; set; }
+        public int IdTypeTransaction { get; set; }
+        public virtual TypeTransaction TypeTransaction { get; set; }
+        public DateTime Date { get; set; }
+        public long Amount { get; set; }
+        public bool State { get; set; }
+    }
+```
+##### TypeTransaction:
+```csharp
+public class TypeTransaction
+    {
+        [Key]
+        public int IdTypeTransaction { get; set; }
+        public string TypeName { get; set; }
     }
 ```
 ##### Users:
@@ -117,4 +200,3 @@ public class Users
 ## ----------------------------------------
 
  Creado con ❤️ por [Junior06sre](https://github.com/Junior06sre) 😊
- 
